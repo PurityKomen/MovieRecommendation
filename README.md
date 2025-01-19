@@ -12,24 +12,18 @@ For the whole app -
 
 1. Clone the application using git clone [https://github.com/PurityKomen/MovieRecommendation.git](https://github.com/PurityKomen/MovieRecommendation.git)
 2. Go into the directory with the code
-3. Run bundle install to install gem dependencies
-4. Go into the client folder,cd client
-5. npm install in the client folder
-6. Run rails db:create db:seed db:migrate for intializing the database and setting it up with the data from the API in the seed file.
-7. Then run npm start --prefix client from the root directory of the folder and rails s on another terminal to get the backend running.
-8. To run tests, cd into the client directory and run npm test 
+3. Run npm install to install node modules
+4. Then run npm start to view the frontend
+5. To run tests, cd into the client directory and run npm test 
 
 ## Technologies Used
 
 1. Angular (Frontend)
-2. Ruby on Rails (Backend)
-3. Postgresql (Database)
-4. Bootstrap (Styling)
-5. Karma for Testing
-6. Firebase for Authentication
-7. VsCode as my text editor
-8. Render to deploy backend
-9. Vercel to deploy frontend 
+2. Bootstrap (Styling)
+3. Karma for Testing
+4. Firebase for Authentication
+5. VsCode as my text editor
+6. Vercel to deploy frontend 
 
 ## Deliverables
 Your client application should have these sets of screens/pages:
