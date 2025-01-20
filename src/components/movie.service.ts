@@ -19,7 +19,7 @@ export class MovieService {
 
   // get movies
   getMovies() {
-    return this.http.get<Movie[]>(`${this.trendingUrl}?api_key=${this.apiKey}`)
+    return this.http.get<Movie[]>(`${this.trendingUrl}?api_key=${this.apiKey}`, { observe: 'body' })
   }
 
 
