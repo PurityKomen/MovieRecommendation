@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Movie } from './movie'
+import { environment } from './environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,24 +11,27 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'https://api.themoviedb.org/3/trending/all/day?api_key=62a3afe51985531994eabe31c623aab1'
+  //Trending url
+  trendingUrl: string = 'https://api.themoviedb.org/3/trending/all/day'
   apiUrl: string = 'https://api.themoviedb.org/3'
+  // retrieve api key
+  apiKey: string = environment.apiKey
 
   // get movies
   getMovies() {
-    return this.http.get<Movie[]>(`${this.apiUrl}/trending/all/day`)
+    return this.http.get<Movie[]>(`${this.trendingUrl}?api_key=${this.apiKey}`)
   }
-  
+
 
   // get movie by id
   getMovieById(id: number) {
-    return this.http.get<Movie[]>(`${this.apiUrl}/movie/${id}`)
+    return this.http.get<Movie[]>(`${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`)
   }
 
   // Perform a search
   searchMovie(searchCriteria: {query: string, page: number}) {
     const params = new HttpParams({ fromObject: searchCriteria });
-    return this.http.get(`${this.apiUrl}/search/multi`, { params })
+    return this.http.get(`${this.apiUrl}/search/multi?api_key=${this.apiKey}`, { params })
   }
 
 }
