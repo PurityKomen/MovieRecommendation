@@ -33,7 +33,6 @@ export class MovieListComponent implements OnInit {
     this.movieService.getMovieTrailers(5).subscribe(data => {
       this.trailerResponse = data
       this.trailers = this.trailerResponse.results
-      console.log(this.trailers)
     }) 
   }
 }

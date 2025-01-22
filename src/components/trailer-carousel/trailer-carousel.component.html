@@ -13,21 +13,12 @@
     </ol>
     }
   
-    <div class="carousel-inner">
+    <div>
         @for(video of trailers; track video.id){
-      <div class="carousel-item">
-        <iframe width="560" height="315"
-          class="embed-responsive-item"
+        <iframe width="1360" height="615"
           [src]="trustUrl(video.key)"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen
+          frameborder="0" allowfullscreen
         ></iframe>
-
-            <a href="https://www.youtube.com/watch?v={{ video.key }}">
-              
-            </a>
-            <p>Hello</p>
-      </div>
     }
     </div>
   </div>
