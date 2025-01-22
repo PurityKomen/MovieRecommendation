@@ -23,10 +23,13 @@
 
       <div class="d-flex justify-content-between mt-4 mb-4 row">
         @for (item of movies; track item.id) {
-            <div class="card col-3" >
+            <div class="card col-3 mb-3" >
                 <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.poster_path }}" alt={{item.title}}>
                 <div class="card-body">
-                  <!-- <h5 class="card-title">{{item.title || item.name}}</h5> -->
+                  <span class="d-flex justify-content-between">
+                    <h5 class=" card-title">{{item.title || item.name}}</h5>
+                    <h5 class=" card-title"><img src="//img.icons8.com/?size=25&id=19295&format=png&color=000000"/>{{item.vote_average}}</h5>
+                  </span>
                   <!-- <p class="card-text"> {{item.overview}}</p> -->
                 </div>
               </div>

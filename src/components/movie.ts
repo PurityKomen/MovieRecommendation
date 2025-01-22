@@ -5,6 +5,7 @@ export class Movie {
         overview: string = ''
         rating: string = ''
         name:string = ''
+        vote_average:string = ''
 }
 
 export interface GetMoviesResponse {
