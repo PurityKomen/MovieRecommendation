@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Movie } from './movie'
 import { environment } from './environments/environment.development';
+import { TrailerResponse } from './movie';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class MovieService {
     return this.http.get<Movie[]>(`${this.trendingUrl}?api_key=${this.apiKey}`, { observe: 'body' })
   }
 
+  //get movie trailer
+  getMovieTrailers(id: Number){
+    return this.http.get<TrailerResponse[]>(`${this.apiUrl}/movie/${id}/videos?api_key=${this.apiKey}`);
+  }
 
   // get movie by id
   getMovieById(id: number) {

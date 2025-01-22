@@ -10,3 +10,14 @@ export class Movie {
 export interface GetMoviesResponse {
     results?: Movie[];
 }
+
+export interface Trailer {
+    id?: string;
+    key?: string;
+    name?: string;
+    site?: string;
+}
+
+export interface TrailerResponse {
+    results?: Trailer[];
+}   

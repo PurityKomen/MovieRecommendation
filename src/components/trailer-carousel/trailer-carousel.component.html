@@ -1,0 +1,33 @@
+<div id="trailersCarousel" class="carousel slide" data-bs-interval="false">
+    @if(trailers.length > 1){
+    <ol class="carousel-indicators">
+        @for(item of trailers; track item.id){
+      <li
+        data-bs-target="#trailersCarousel"
+        attr.data-slide-to="{{ item.id }}"
+        
+      >
+        {{ item.id }}
+      </li>
+    }
+    </ol>
+    }
+  
+    <div class="carousel-inner">
+        @for(video of trailers; track video.id){
+      <div class="carousel-item">
+        <iframe width="560" height="315"
+          class="embed-responsive-item"
+          [src]="trustUrl(video.key)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+
+            <a href="https://www.youtube.com/watch?v={{ video.key }}">
+              
+            </a>
+            <p>Hello</p>
+      </div>
+    }
+    </div>
+  </div>
