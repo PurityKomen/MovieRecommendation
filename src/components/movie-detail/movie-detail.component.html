@@ -1,1 +1,11 @@
-<p>movie-detail works!</p>
+@if(movieDetail){
+  <div class="container flex justify-center m-4" >
+    <img class="card-img-top w-25 mt-2" src="https://image.tmdb.org/t/p/original/{{ movieDetail.poster_path }}" alt={{movieDetail.name}}>
+    <div class="card-body">
+      <span class="">
+        <h5 class=" card-title">{{movieDetail.title || movieDetail.name}}</h5>
+        <h5 class=" card-title"><img src="//img.icons8.com/?size=25&id=19295&format=png&color=000000"/>{{movieDetail.vote_average}}</h5>
+      </span>
+    </div>
+  </div> 
+}

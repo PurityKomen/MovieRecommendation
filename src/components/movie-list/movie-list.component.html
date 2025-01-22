@@ -30,7 +30,7 @@
                     <h5 class=" card-title">{{item.title || item.name}}</h5>
                     <h5 class=" card-title"><img src="//img.icons8.com/?size=25&id=19295&format=png&color=000000"/>{{item.vote_average}}</h5>
                   </span>
-                  <!-- <p class="card-text"> {{item.overview}}</p> -->
+                  <button type="button" (click)="viewMovieDetail(item.id)" class="btn btn-outline-success">View More</button>
                 </div>
               </div>
         }

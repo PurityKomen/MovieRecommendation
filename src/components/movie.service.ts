@@ -14,13 +14,14 @@ export class MovieService {
 
   //Trending url
   trendingUrl: string = 'https://api.themoviedb.org/3/trending/all/day'
+  discoverUrl: string = 'https://api.themoviedb.org/3/discover/movie'
   apiUrl: string = 'https://api.themoviedb.org/3'
   // retrieve api key
   apiKey: string = environment.apiKey
 
   // get movies
   getMovies() {
-    return this.http.get<Movie[]>(`${this.trendingUrl}?api_key=${this.apiKey}`, { observe: 'body' })
+    return this.http.get<Movie[]>(`${this.discoverUrl}?api_key=${this.apiKey}`, { observe: 'body' })
   }
 
   //get movie trailer

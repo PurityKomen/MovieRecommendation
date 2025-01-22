@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { TrailerCarouselComponent } from "../trailer-carousel/trailer-carousel.component";
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-movie-list',
@@ -19,7 +20,12 @@ export class MovieListComponent implements OnInit {
   
   constructor(
     public movieService:MovieService,
+    private router: Router,
   ) {
+  }
+
+  viewMovieDetail(id: number){
+    this.router.navigate(['/movie', id]);
   }
 
   ngOnInit() { 
