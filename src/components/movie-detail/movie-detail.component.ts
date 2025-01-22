@@ -17,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
   ) {}
   public movieId!: any
   public movieDetail!: any
+  public genres:any = []
 
   ngOnInit() { 
     //get movie id from the route
@@ -25,8 +26,12 @@ export class MovieDetailComponent implements OnInit {
     });
 
     this.movieService.getMovieById(this.movieId).subscribe(data => {
-      console.log(data)
+      console.log('data',data)
       this.movieDetail = data
+      
+      for(const item of this.movieDetail.genres){
+        this.genres.unshift(item.name)
+      }
     }) 
   }
 

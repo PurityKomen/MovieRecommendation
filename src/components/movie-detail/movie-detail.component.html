@@ -1,11 +1,22 @@
 @if(movieDetail){
   <div class="container flex justify-center m-4" >
-    <img class="card-img-top w-25 mt-2" src="https://image.tmdb.org/t/p/original/{{ movieDetail.poster_path }}" alt={{movieDetail.name}}>
-    <div class="card-body">
-      <span class="">
-        <h5 class=" card-title">{{movieDetail.title || movieDetail.name}}</h5>
-        <h5 class=" card-title"><img src="//img.icons8.com/?size=25&id=19295&format=png&color=000000"/>{{movieDetail.vote_average}}</h5>
-      </span>
+    <div class="d-flex justify-content-start">
+      <img class="w-25 mt-2" src="https://image.tmdb.org/t/p/original/{{ movieDetail.poster_path }}" alt={{movieDetail.name}}>
+    
+      <div class="m-4">
+        <h4 class="d-flex justify-content-center">Storyline</h4>
+        <p class=""> {{movieDetail.overview }}</p>
+        
+        <h6>Genre</h6>
+        @for(item of genres; track item.id) {
+        <li >{{item.id}}{{ item }}</li>
+        }
+
+        <h6 class="mb-2">Language: </h6> <p class="">{{movieDetail.original_language === 'en' ? 'Engilsh' : ''}}</p>
+        <h6 class="mb-2">Release Date: </h6> <p class="">{{movieDetail.release_date }}</p>
+        <h6 class="mb-2">Status: </h6> <p class="">{{movieDetail.status }}</p>
+        
+      </div>
     </div>
   </div> 
 }
