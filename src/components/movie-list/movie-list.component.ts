@@ -3,12 +3,13 @@ import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { Router } from '@angular/router';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgbRatingModule],
-  providers: [MovieService,NgbRatingConfig],
+  imports: [NgbRatingModule,HttpClientModule],
+  providers: [MovieService,NgbRatingConfig,HttpClient],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
 })

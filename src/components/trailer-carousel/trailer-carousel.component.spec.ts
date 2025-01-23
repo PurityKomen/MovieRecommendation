@@ -17,7 +17,9 @@ describe('TrailerCarouselComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should test trustUrl', () => {
+    spyOn(component, 'trustUrl').and.callThrough();
+    component.trustUrl('1');
+    expect(component.trustUrl).toHaveBeenCalled();
   });
 });
