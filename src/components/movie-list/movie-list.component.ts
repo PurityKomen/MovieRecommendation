@@ -17,6 +17,7 @@ export class MovieListComponent implements OnInit {
   public movies!: Movie[];
   public movieDetail!:any
   public rating!: any
+  public loading: boolean = true
 
   constructor(public movieService: MovieService, private router: Router, config: NgbRatingConfig) {
     // customize default values of ratings used by this component tree
@@ -32,14 +33,17 @@ export class MovieListComponent implements OnInit {
   ngOnInit() {
     //fetch trending movies
     this.movieService.getMovies().subscribe((data) => {
+      this.loading = true
       this.movieData = data;
+      this.loading = false
       this.movies = this.movieData.results;
     });
 
     //get movie details from id
     this.movieService.getMovieById(762509).subscribe(data => {
+      this.loading = true
       this.movieDetail = data
-      console.log(this.movieDetail)
+      this.loading = false
       this.rating = this.movieDetail.vote_average
     }) 
   }
