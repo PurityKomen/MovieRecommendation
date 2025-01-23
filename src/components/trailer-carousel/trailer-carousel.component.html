@@ -1,22 +1,8 @@
 <div id="trailersCarousel" class="carousel slide" data-bs-interval="false">
-    @if(trailers.length > 1){
-    <ol class="carousel-indicators">
-        @for(item of trailers; track item.id){
-      <li
-        data-bs-target="#trailersCarousel"
-        attr.data-slide-to="{{ item.id }}"
-        
-      >
-        {{ item.id }}
-      </li>
-    }
-    </ol>
-    }
-  
     <div>
-        @for(video of trailers; track video.id){
+      @if(trailers){
         <iframe width="1360" height="615"
-          [src]="trustUrl(video.key)"
+          [src]="trustUrl(trailers[0].key)"
           frameborder="0" allowfullscreen
         ></iframe>
     }

@@ -1,45 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
-import { TrailerCarouselComponent } from "../trailer-carousel/trailer-carousel.component";
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [TrailerCarouselComponent],
+  imports: [],
   providers: [MovieService],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.css'
+  styleUrl: './movie-list.component.css',
 })
 export class MovieListComponent implements OnInit {
-  public movieData!: any
-  public movies!: Movie[]
-  public trailerResponse: any
-  public trailers: any
+  public movieData!: any;
+  public movies!: Movie[];
   
-  constructor(
-    public movieService:MovieService,
-    private router: Router,
-  ) {
-  }
 
-  viewMovieDetail(id: number){
+  constructor(public movieService: MovieService, private router: Router) {}
+
+  viewMovieDetail(id: number) {
     this.router.navigate(['/movie', id]);
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     //fetch trending movies
-    this.movieService.getMovies().subscribe(data => {
-      this.movieData = data
-      this.movies = this.movieData.results
-    }) 
-
-    //fetch movie trailers
-    this.movieService.getMovieTrailers(5).subscribe(data => {
-      this.trailerResponse = data
-      this.trailers = this.trailerResponse.results
-    }) 
+    this.movieService.getMovies().subscribe((data) => {
+      this.movieData = data;
+      this.movies = this.movieData.results;
+    });
   }
 }
-

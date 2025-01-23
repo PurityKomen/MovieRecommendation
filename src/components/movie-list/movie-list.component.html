@@ -2,7 +2,7 @@
     <nav class="navbar bg-light">
         <div class="container-fluid">
           <a class="navbar-brand">MovieRecommendation Site</a>
-          <form class="d-flex" role="search">
+          <form class="d-flex justify-content-center" role="search">
             <input
               class="form-control me-2"
               type="search"
@@ -14,15 +14,11 @@
         </div>
       </nav>
 
-      
-        @if(trailers && trailers.length){
-          <div  class="mb-3">
-            <app-trailer-carousel [trailers]="trailers"></app-trailer-carousel>
-          </div>
-        }
+        
 
       <div class="d-flex justify-content-between mt-4 mb-4 row">
         @for (item of movies; track item.id) {
+
             <div class="card col-3 mb-3" >
                 <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.poster_path }}" alt={{item.title}}>
                 <div class="card-body">

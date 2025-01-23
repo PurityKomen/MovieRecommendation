@@ -1,18 +1,20 @@
+<div class="container row m-3">
+@if(trailers && trailers.length){
+  <div  class="mb-3 mt-4">
+    <app-trailer-carousel [trailers]="trailers"></app-trailer-carousel>
+  </div>
+}
+
 @if(movieDetail){
   <div class="container flex justify-center m-4" >
     <div class="d-flex justify-content-start">
       <img class="w-25 mt-2" src="https://image.tmdb.org/t/p/original/{{ movieDetail.poster_path }}" alt={{movieDetail.name}}>
     
       <div class="m-4">
-        <h4 class="d-flex justify-content-center">Storyline</h4>
+        <h5 class="display-5 d-flex justify-content-center">Storyline</h5>
         <p class=""> {{movieDetail.overview }}</p>
-        
-        <h6>Genre</h6>
-        @for(item of genres; track item.id) {
-        <li >{{item.id}}{{ item }}</li>
-        }
 
-        <h6 class="mb-2">Language: </h6> <p class="">{{movieDetail.original_language === 'en' ? 'Engilsh' : ''}}</p>
+        <h6 class="mb-2">Language: </h6> <p class="">{{movieDetail.original_language === 'en' ? 'Engilsh' : 'French'}}</p>
         <h6 class="mb-2">Release Date: </h6> <p class="">{{movieDetail.release_date }}</p>
         <h6 class="mb-2">Status: </h6> <p class="">{{movieDetail.status }}</p>
         
@@ -20,3 +22,18 @@
     </div>
   </div> 
 }
+
+
+<h5 class="display-5 d-flex justify-content-center">Cast</h5>
+@for(item of movieCast; track item.id) {
+  <div class="col-2 mb-3" >
+    <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.profile_path }}" alt='Not available at the moment'>
+    <div class="card-body">
+      <span>
+        <h5 class="">{{item.title || item.name}}</h5>
+        <p class="text-mute"> {{item.character}}</p>
+      </span>
+    </div>
+  </div>
+}
+</div>

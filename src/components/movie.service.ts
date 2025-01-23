@@ -21,7 +21,7 @@ export class MovieService {
 
   // get movies
   getMovies() {
-    return this.http.get<Movie[]>(`${this.discoverUrl}?api_key=${this.apiKey}`, { observe: 'body' })
+    return this.http.get<Movie[]>(`${this.discoverUrl}?api_key=${this.apiKey}&language=en`, { observe: 'body' })
   }
 
   //get movie trailer
@@ -32,6 +32,11 @@ export class MovieService {
   // get movie by id
   getMovieById(id: number) {
     return this.http.get<Movie[]>(`${this.apiUrl}/movie/${id}?api_key=${this.apiKey}`)
+  }
+
+  //get cast information for a particular movie
+  getMovieCast(id:number){
+    return this.http.get<Movie[]>(`${this.apiUrl}/movie/${id}/credits?api_key=${this.apiKey}`)
   }
 
   // Perform a search
