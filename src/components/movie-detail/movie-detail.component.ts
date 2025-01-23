@@ -40,7 +40,6 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getMovieCast(this.movieId).subscribe(data => {
       this.movieInfo = data
       this.movieCast = this.movieInfo.cast
-      console.log(this.movieCast)
     }) 
 
     //fetch movie trailers

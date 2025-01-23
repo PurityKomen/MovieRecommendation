@@ -13,7 +13,7 @@ export class TrailerCarouselComponent {
   constructor(private sanitizer: DomSanitizer
   ) {
   }
-  
+   //store movie trailers
     @Input() trailers!: any;
   
     trustUrl(key: string): string {

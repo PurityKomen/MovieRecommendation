@@ -1,0 +1,15 @@
+.jumbotron{
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: white;
+        text-align: left;
+        font-family: 'Gabriela', serif;
+        padding:16%;
+        display: inline-block;
+}
+
+.text-overlay{
+        background-color: rgb(16, 15, 15);
+        float: left;
+}
