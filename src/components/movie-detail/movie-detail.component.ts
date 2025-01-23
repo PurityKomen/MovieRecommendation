@@ -24,6 +24,47 @@ export class MovieDetailComponent implements OnInit {
   public trailerResponse: any;
   public trailers: any;
   public trailerList:any
+  public loading:boolean = false
+
+  //get movie details from id
+  getMovieDetails(){
+    this.loading = true
+    this.movieService.getMovieById(762509).subscribe({
+      next: (data) => {
+        this.movieDetail = data
+        this.loading = false
+    },
+    error: (err)=>console.log('error',err)
+    });
+  }
+
+  //fetch movie cast
+  getCast(){
+    this.loading = true
+    this.movieService.getMovieCast(762509).subscribe({
+      next: (data) => {
+        this.movieInfo = data
+        this.movieCast = this.movieInfo.cast  
+        this.loading = false
+    },
+      error: (err)=>console.log('error',err)
+    });
+  }
+
+
+  //get movie details from id
+  getMovieTrailer(){
+    this.loading = true
+    this.movieService.getMovieTrailers(762509).subscribe({
+      next: (data) => {
+        this.trailerResponse = data
+        this.trailerList = this.trailerResponse.results
+        this.trailers = this.trailerList
+        this.loading = false
+    },
+      error: (err)=>console.log('error',err)
+    });
+  }
 
   ngOnInit() { 
     //get movie id from the route
@@ -31,23 +72,9 @@ export class MovieDetailComponent implements OnInit {
       this.movieId = params.get('id'); 
     });
 
-    //get movie details from id
-    this.movieService.getMovieById(this.movieId).subscribe(data => {
-      this.movieDetail = data
-    }) 
-
-    //fetch movie cast
-    this.movieService.getMovieCast(this.movieId).subscribe(data => {
-      this.movieInfo = data
-      this.movieCast = this.movieInfo.cast
-    }) 
-
-    //fetch movie trailers
-    this.movieService.getMovieTrailers(this.movieId).subscribe(data => {
-      this.trailerResponse = data
-      this.trailerList = this.trailerResponse.results
-      this.trailers = this.trailerList
-    })
+    this.getMovieDetails()
+    this.getCast()
+    this.getMovieTrailer()
   }
 
 }

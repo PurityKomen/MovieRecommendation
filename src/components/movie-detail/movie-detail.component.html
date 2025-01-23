@@ -5,6 +5,14 @@
   </div>
 }
 
+@if(this.loading){
+  <div class="d-flex justify-content-center" ng-show="loading">
+  <div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+}
+
 @if(movieDetail){
   <div class="container flex justify-center m-4" >
     <div class="d-flex justify-content-start">
