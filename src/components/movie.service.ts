@@ -40,7 +40,7 @@ export class MovieService {
   }
 
   // Perform a search
-  searchMovie(searchCriteria: {query: string, page: number}) {
+  searchMovie(searchCriteria: {query: string}) {
     const params = new HttpParams({ fromObject: searchCriteria });
     return this.http.get(`${this.apiUrl}/search/multi?api_key=${this.apiKey}`, { params })
   }
