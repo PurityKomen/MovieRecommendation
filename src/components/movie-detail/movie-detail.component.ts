@@ -28,8 +28,9 @@ export class MovieDetailComponent implements OnInit {
 
   //get movie details from id
   getMovieDetails(){
+    console.log('id',this.movieId)
     this.loading = true
-    this.movieService.getMovieById(762509).subscribe({
+    this.movieService.getMovieById(this.movieId).subscribe({
       next: (data) => {
         this.movieDetail = data
         this.loading = false
@@ -41,7 +42,7 @@ export class MovieDetailComponent implements OnInit {
   //fetch movie cast
   getCast(){
     this.loading = true
-    this.movieService.getMovieCast(762509).subscribe({
+    this.movieService.getMovieCast(this.movieId).subscribe({
       next: (data) => {
         this.movieInfo = data
         this.movieCast = this.movieInfo.cast  
@@ -55,7 +56,7 @@ export class MovieDetailComponent implements OnInit {
   //get movie details from id
   getMovieTrailer(){
     this.loading = true
-    this.movieService.getMovieTrailers(762509).subscribe({
+    this.movieService.getMovieTrailers(this.movieId).subscribe({
       next: (data) => {
         this.trailerResponse = data
         this.trailerList = this.trailerResponse.results
