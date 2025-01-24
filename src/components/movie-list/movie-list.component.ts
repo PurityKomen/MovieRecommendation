@@ -4,11 +4,13 @@ import { Movie } from '../movie';
 import { Router } from '@angular/router';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule],
+  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule ],
   providers: [MovieService,NgbRatingConfig,HttpClient],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
@@ -19,8 +21,16 @@ export class MovieListComponent implements OnInit {
   public movieDetail!:any
   public rating!: any
   public loading: boolean = false
+  searchForm!: FormGroup
+  public searchResult: any
+  public searchList!: any
 
-  constructor(public movieService: MovieService, private router: Router, config: NgbRatingConfig) {
+  constructor(
+    public movieService: MovieService,
+     private router: Router, 
+     config: NgbRatingConfig,
+     public fb: FormBuilder,
+    ) {
     // customize default values of ratings used by this component tree
 		config.max = 10;
 		config.readonly = true;
@@ -29,6 +39,24 @@ export class MovieListComponent implements OnInit {
   //redirect to movie details page
   viewMovieDetail(id: number) {
     this.router.navigate(['/movie', id]);
+  }
+
+  //Perform a search of movie title
+  searchMovieDetail(){
+    const searchCriteria = {
+      query: ''
+    };
+
+    searchCriteria.query = this.searchForm?.value.name
+
+    //Update data with the data from the form
+    this.movieService.searchMovie(searchCriteria).subscribe(data => {
+      this.searchList = data
+      this.searchResult = this.searchList.results
+      console.log(this.searchResult)
+      this.searchForm.reset()
+    })
+    
   }
  
   //fetch all movies
@@ -60,5 +88,13 @@ export class MovieListComponent implements OnInit {
   ngOnInit() {
     this.getAllMovies()
     this.getMovieDetails()
+
+    //Validate data from the form
+    this.searchForm = this.fb.group(
+      {
+        name: [''],
+        query: [''],
+      },
+  );
   }
 }
