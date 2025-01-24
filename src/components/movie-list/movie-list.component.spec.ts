@@ -44,7 +44,7 @@ describe('MovieListComponent when it throws an error', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieListComponent]
+      imports: [MovieListComponent,RouterTestingModule]
     })
     .compileComponents();
 

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-movie-list',
@@ -14,6 +15,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [MovieService,NgbRatingConfig,HttpClient],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
+  animations: [
+    trigger('animation',[
+      transition(':enter', [
+        animate('1.25s', keyframes([
+            style({ scale: 0.7, opacity: 0.7, translate: '-300% 0', offset: 0 }),
+            style({ scale: 0.7, opacity: 0.7, translate: '0 0', offset: 0.8 }),
+            style({ scale: 1, opacity: 1, translate: '0 0', offset: 1 }),
+        ]))
+    ])
+    ])
+  ],
 })
 export class MovieListComponent implements OnInit {
   public movieData!: any;
@@ -30,6 +42,7 @@ export class MovieListComponent implements OnInit {
      private router: Router, 
      config: NgbRatingConfig,
      public fb: FormBuilder,
+     protected route: ActivatedRoute,
     ) {
     // customize default values of ratings used by this component tree
 		config.max = 10;
@@ -53,7 +66,6 @@ export class MovieListComponent implements OnInit {
     this.movieService.searchMovie(searchCriteria).subscribe(data => {
       this.searchList = data
       this.searchResult = this.searchList.results
-      console.log(this.searchResult)
       this.searchForm.reset()
     })
     
