@@ -26,8 +26,8 @@
       }
 
       @if(movieDetail && !loading){
-        <div class="jumbotron container" style="background-image: url('https://image.tmdb.org/t/p/original/{{ movieDetail.poster_path }}');">
-          <div class="">
+        <div class="jumbotron container" style="background-image: url('https://image.tmdb.org/t/p/original/{{ movieDetail.backdrop_path }}'); ">
+          <div class="text-overlay">
               <h1 class="display-4 d-flex justify-content-center">{{movieDetail.title || movieDetail.name}}</h1>
             <span class="d-flex justify-content-center">
               <p class="mr-3"><ngb-rating [rate]='this.rating' /></p>

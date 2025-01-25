@@ -87,7 +87,7 @@ export class MovieListComponent implements OnInit {
   //get movie details from id
   getMovieDetails(){
     this.loading = true
-    this.movieService.getMovieById(762509).subscribe({
+    this.movieService.getMovieById(1241982).subscribe({
       next: (data) => {
         this.movieDetail = data
         this.loading = false
