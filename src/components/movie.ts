@@ -23,3 +23,8 @@ export interface Trailer {
 export interface TrailerResponse {
     results?: Trailer[];
 }   
+
+export interface userInterface {
+    email: string,
+    username: string
+}
