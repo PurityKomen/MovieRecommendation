@@ -7,11 +7,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule ],
+  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule ],
   providers: [MovieService,NgbRatingConfig,HttpClient],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
