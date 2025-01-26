@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from "@angular/router/testing";
 import { MovieService } from './movie.service';
 
-describe('MovieListComponent', () => {
+describe('MovieServiceComponent', () => {
   let service: MovieService
 
   beforeEach(async () => {

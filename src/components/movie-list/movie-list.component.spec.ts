@@ -10,7 +10,7 @@ describe('MovieListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieListComponent, HttpClientTestingModule, RouterTestingModule]
+      imports: [MovieListComponent, HttpClientTestingModule, RouterTestingModule],
     })
     .compileComponents();
 
@@ -35,6 +35,12 @@ describe('MovieListComponent', () => {
     spyOn(component, 'getMovieDetails').and.callThrough();
     component.getMovieDetails();
     expect(component.getMovieDetails).toHaveBeenCalled();
+  });
+
+  it('should test logout', () => {
+    spyOn(component, 'logout').and.callThrough();
+    component.logout();
+    expect(component.logout).toHaveBeenCalled();
   });
 });
 

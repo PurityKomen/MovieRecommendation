@@ -17,7 +17,9 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should test loginUser', () => {
+    spyOn(component, 'loginUser').and.callThrough();
+    component.loginUser();
+    expect(component.loginUser).toHaveBeenCalled();
   });
 });

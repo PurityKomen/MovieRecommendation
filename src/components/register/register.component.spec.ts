@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
+import { AuthService } from '../auth.service';
+import { Auth } from '@angular/fire/auth';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -8,7 +10,8 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterComponent]
+      imports: [RegisterComponent,Auth],
+      providers: [AuthService],
     })
     .compileComponents();
 
@@ -17,7 +20,9 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should test registerUser', () => {
+    spyOn(component, 'registerUser').and.callThrough();
+    component.registerUser();
+    expect(component.registerUser).toHaveBeenCalled();
   });
 });

@@ -2,7 +2,6 @@ import { animate, query, style, transition, trigger } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet  } from '@angular/router';
 import { AuthService } from '../components/auth.service';
-import { user } from 'rxfire/auth';
 
 @Component({
   selector: 'app-root',

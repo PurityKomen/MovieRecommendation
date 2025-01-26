@@ -7,6 +7,7 @@ import { UserInterface } from './movie';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   constructor() { }

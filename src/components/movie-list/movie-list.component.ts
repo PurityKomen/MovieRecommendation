@@ -14,7 +14,7 @@ import { AuthService } from '../auth.service';
   selector: 'app-movie-list',
   standalone: true,
   imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule ],
-  providers: [MovieService,NgbRatingConfig,HttpClient],
+  providers: [MovieService,NgbRatingConfig,HttpClient,AuthService],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
   animations: [
