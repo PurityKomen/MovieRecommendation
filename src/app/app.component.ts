@@ -1,12 +1,15 @@
 import { animate, query, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule, RouterOutlet  } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet  } from '@angular/router';
+import { AuthService } from '../components/auth.service';
+import { user } from 'rxfire/auth';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [ RouterModule, RouterOutlet],
   templateUrl: './app.component.html',
+  providers: [AuthService],
   styleUrl: './app.component.css',
   animations: [
       trigger('routeTransition',[
@@ -24,7 +27,25 @@ import { ActivatedRoute, RouterModule, RouterOutlet  } from '@angular/router';
       ])
     ],
 })
-export class AppComponent {
-  constructor(protected route: ActivatedRoute) {
+export class AppComponent implements OnInit{
+  constructor(protected route: ActivatedRoute,
+    public authService: AuthService,
+    private router: Router,
+  ) {
+  }
+
+  ngOnInit() {
+    this.authService.user$.subscribe(data => {
+      if(data){
+        this.authService.currentUser.set({
+          email: data.email!,
+          username: data.displayName!,
+        })
+        this.router.navigate(['/movies']);
+      } else {
+        this.authService.currentUser.set(null)
+        this.router.navigate(['/register']);
+      }
+    })
   }
 }

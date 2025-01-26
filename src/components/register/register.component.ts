@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,RouterModule],
   providers: [AuthService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

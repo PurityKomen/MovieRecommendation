@@ -4,6 +4,7 @@
           <a class="navbar-brand">MovieRecommendation Site</a>
           <p><a routerLink="/login" routerLinkActive="active">Login</a></p>
           <p><a routerLink="/register" routerLinkActive="active">Register</a></p>
+          <button class="btn btn-outline-success" (click)="logout()" type="submit">Logout</button>
           <div class="">
           <form class="d-flex justify-content-center" [formGroup]="searchForm"  (ngSubmit)="searchMovieDetail()">
             <input

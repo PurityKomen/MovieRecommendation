@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -44,6 +45,7 @@ export class MovieListComponent implements OnInit {
      config: NgbRatingConfig,
      public fb: FormBuilder,
      protected route: ActivatedRoute,
+     public authService: AuthService,
     ) {
     // customize default values of ratings used by this component tree
 		config.max = 10;
@@ -96,6 +98,11 @@ export class MovieListComponent implements OnInit {
     },
     error: (err)=>console.log('error',err)
     });
+  }
+
+  //Logout a user
+  logout(){
+    this.authService.logout()
   }
 
   ngOnInit() {
