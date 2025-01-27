@@ -8,6 +8,7 @@ import { animate, keyframes, style, transition, trigger } from '@angular/animati
   selector: 'app-movie-cards',
   standalone: true,
   imports: [],
+  providers: [MovieService],
   templateUrl: './movie-cards.component.html',
   styleUrl: './movie-cards.component.css',
   animations: [
@@ -52,7 +53,6 @@ export class MovieCardsComponent implements OnInit{
   viewMovieDetail(id: number) {
     this.router.navigate(['/movie', id]);
   }
-
   ngOnInit() {
     this.getAllMovies()
   }

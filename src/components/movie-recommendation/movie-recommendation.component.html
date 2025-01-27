@@ -1,7 +1,8 @@
 <div class="container d-flex justify-content-between m-4 mb-4 row">
-        <h5 class="display-5">Discover Movies</h5>
-        @for (item of movies; track item.id ) {
-
+    
+    @if(this.recommendMovies){
+        <h5 class="display-5">Reccommended Movies</h5>
+        @for (item of recommendMovies; track item.id ) {
             <div [@animation]="route.snapshot.data" class="card col-3 mb-3" >
                 <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.poster_path  }}" alt='Not available'>
                 <div class="card-body">
@@ -13,4 +14,5 @@
                 </div>
             </div>
         }
+    }
 </div>

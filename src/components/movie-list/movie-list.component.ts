@@ -9,12 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { MovieCardsComponent } from '../movie-cards/movie-cards.component';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule, MovieCardsComponent],
+  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule],
   providers: [MovieService,NgbRatingConfig,HttpClient,AuthService],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
@@ -50,7 +49,6 @@ export class MovieListComponent implements OnInit {
     actors: 134
   }; 
   public genre:any
-  public recommend!: any
   public recommendMovies!: any
 
   constructor(
@@ -123,6 +121,11 @@ export class MovieListComponent implements OnInit {
  //View all movies
   viewDiscoverMovies(){
     this.router.navigate(['/cards']);
+  }
+
+  //View recommended movies
+  viewRecommendedMovies(){
+    this.router.navigate(['/recommend']);
   }
 
   //recommendation algorithm based on user preferences on genres and actors the user likes
