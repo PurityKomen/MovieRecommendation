@@ -1,0 +1,34 @@
+name: Angular CI/CD
+
+on:
+  push:
+    branches: [ "main" ] # Only trigger on pushes to the 'main' branch
+  pull_request:
+    branches: [ "main" ] # Also trigger on pull requests targeting the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Use Node.js version 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linting
+        run: npm run lint 
+
+      - name: Run unit tests
+        run: npm run test -- --coverage
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: ./coverage

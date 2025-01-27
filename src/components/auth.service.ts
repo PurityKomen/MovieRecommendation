@@ -10,8 +10,6 @@ import { UserInterface } from './movie';
 
 export class AuthService {
 
-  constructor() { }
-
   firebaseAuth = inject(Auth)
   user$ = user(this.firebaseAuth)
   currentUser = signal <UserInterface | null | undefined>(undefined)
@@ -25,7 +23,7 @@ export class AuthService {
 
   //Login Users
   login(email:string, password:string){
-    return signInWithEmailAndPassword(this.firebaseAuth,email,password).then(() => {})
+    return signInWithEmailAndPassword(this.firebaseAuth,email,password)
   }
 
   //logout users

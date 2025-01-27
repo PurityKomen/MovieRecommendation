@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
-import { Movie } from '../movie';
 import { ActivatedRoute, Router } from '@angular/router';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
@@ -32,7 +31,7 @@ export class MovieCardsComponent implements OnInit{
     }
 
     public movieData!: any;
-    public movies!: Movie[];
+    public movies!: any;
     public movieDetail!:any
     public loading: boolean = false
 

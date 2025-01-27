@@ -26,7 +26,7 @@ export class MovieService {
   }
 
   //get movie trailer
-  getMovieTrailers(id: Number){
+  getMovieTrailers(id: number){
     return this.http.get<TrailerResponse[]>(`${this.apiUrl}/movie/${id}/videos?api_key=${this.apiKey}`);
   }
 

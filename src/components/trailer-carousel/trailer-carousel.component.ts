@@ -14,7 +14,7 @@ export class TrailerCarouselComponent {
   ) {
   }
    //store movie trailers
-    @Input() trailers!: any;
+    @Input() trailers!: Trailer[];
   
     trustUrl(key: string): string {
       return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${key}`) as string;
