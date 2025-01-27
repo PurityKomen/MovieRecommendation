@@ -42,7 +42,13 @@
       }
 
       <div class="d-flex justify-content-between mt-4 mb-4 row">
-        @for (item of (searchResult || movies); track item.id) {
+        <div>
+          <h5 class="display-5">Discover Movies</h5>
+          <span class="float-right d-flex justify-content-end m-2"> <button type="button" (click)="viewDiscoverMovies()"
+             class="btn btn-outline-success">View Full Discover Movies List</button></span>
+        </div>
+        
+        @for (item of (searchResult || movies); track item.id ) {
 
             <div [@animation]="route.snapshot.data" class="card col-3 mb-3" >
                 <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.profile_path || item.poster_path  }}" alt='Not available'>

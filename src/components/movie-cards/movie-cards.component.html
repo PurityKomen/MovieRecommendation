@@ -1,0 +1,16 @@
+<div class="container d-flex justify-content-between m-4 mb-4 row">
+    <h5 class="display-5">Discover Movies</h5>
+    @for (item of movies; track item.id ) {
+
+        <div [@animation]="route.snapshot.data" class="card col-3 mb-3" >
+            <img class="card-img-top w-75 mt-2" src="https://image.tmdb.org/t/p/original/{{ item.poster_path  }}" alt='Not available'>
+            <div class="card-body">
+            <span class="d-flex justify-content-between">
+                <h5 class=" card-title">{{item.title || item.name}}</h5>
+                <h5 class=" card-title"><img src="//img.icons8.com/?size=25&id=19295&format=png&color=000000"/>{{ item.vote_average }}</h5>
+            </span>
+            <button type="button" (click)="viewMovieDetail(item.id)" class="btn btn-outline-success">View More</button>
+            </div>
+        </div>
+    }
+</div>

@@ -9,11 +9,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MovieCardsComponent } from '../movie-cards/movie-cards.component';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule ],
+  imports: [NgbRatingModule,HttpClientModule,FormsModule, ReactiveFormsModule,RouterModule, MovieCardsComponent],
   providers: [MovieService,NgbRatingConfig,HttpClient,AuthService],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css',
@@ -38,6 +39,7 @@ export class MovieListComponent implements OnInit {
   searchForm!: FormGroup
   public searchResult: any
   public searchList!: any
+  public movieList!: Movie[];
 
   constructor(
     public movieService: MovieService,
@@ -81,7 +83,8 @@ export class MovieListComponent implements OnInit {
       next: (data) => {
       this.movieData = data;
       this.loading = false
-      this.movies = this.movieData.results;
+      this.movieList = this.movieData.results
+      this.movies = this.movieData.results.slice(0,4)
     },
     error: (err)=>console.log('error',err)
     });
@@ -103,6 +106,11 @@ export class MovieListComponent implements OnInit {
   //Logout a user
   logout(){
     this.authService.logout()
+  }
+
+
+  viewDiscoverMovies(){
+    this.router.navigate(['/cards']);
   }
 
   ngOnInit() {
