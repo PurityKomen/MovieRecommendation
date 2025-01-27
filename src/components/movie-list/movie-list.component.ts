@@ -40,6 +40,18 @@ export class MovieListComponent implements OnInit {
   public searchResult: any
   public searchList!: any
   public movieList!: Movie[];
+  public userPreferences = { 
+    //genre ids for comedy,action and drama
+    genres: {
+      genre1: 35,
+      genre2:28,
+      genre3:18},
+    // actor_id for Jamie Fox
+    actors: 134
+  }; 
+  public genre:any
+  public recommend!: any
+  public recommendMovies!: any
 
   constructor(
     public movieService: MovieService,
@@ -108,14 +120,30 @@ export class MovieListComponent implements OnInit {
     this.authService.logout()
   }
 
-
+ //View all movies
   viewDiscoverMovies(){
     this.router.navigate(['/cards']);
+  }
+
+  //recommendation algorithm based on user preferences on genres and actors the user likes
+  recomendedMovies(){
+    /* Based on user preferences,we will return an api with certain genres and actors the user loves
+     we will send the genre id and actor id and attach it to the api to return movies
+     which contain any of those genres and actors*/
+     const genre1 = this.userPreferences.genres.genre1
+     const genre2 = this.userPreferences.genres.genre2
+     const genre3 = this.userPreferences.genres.genre3
+     const actor1 = this.userPreferences.actors
+
+     return this.movieService.getRecommendedMovies(genre1,genre2,genre3,actor1).subscribe((data:any) => {
+      this.recommendMovies = data.results.slice(0,4)
+    })
   }
 
   ngOnInit() {
     this.getAllMovies()
     this.getMovieDetails()
+    this.recomendedMovies()
 
     //Validate data from the form
     this.searchForm = this.fb.group(
@@ -124,5 +152,6 @@ export class MovieListComponent implements OnInit {
         query: [''],
       },
   );
-  }
+     
+}
 }
