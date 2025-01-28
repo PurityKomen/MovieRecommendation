@@ -2,7 +2,7 @@ name: Angular CI/CD
 
 on:
   push:
-    branches: [ "main" ] # Only trigger on pushes to the 'main' branch
+    branches: [ "production" ] # Only trigger on pushes to the 'production' branch
   pull_request:
     branches: [ "main" ] # Also trigger on pull requests targeting the 'main' branch
 
