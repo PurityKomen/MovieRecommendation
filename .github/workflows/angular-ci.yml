@@ -2,9 +2,9 @@ name: Angular CI/CD
 
 on:
   push:
-    branches: [ "main" ] # Only trigger on pushes to the 'main' branch
+    branches: ["production"] # Only trigger on pushes to the 'production' branch
   pull_request:
-    branches: [ "main" ] # Also trigger on pull requests targeting the 'main' branch
+    branches: ["main"] # Also trigger on pull requests targeting the 'main' branch
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run linting
-        run: npm run lint 
+        run: npm run lint
 
       - name: Run unit tests
-        run: npm run test
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
