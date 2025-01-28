@@ -17,7 +17,7 @@ export interface GetMoviesResponse {
 
 export interface Trailer {
     id?: string;
-    key?: string;
+    key: string;
     name?: string;
     site?: string;
 }

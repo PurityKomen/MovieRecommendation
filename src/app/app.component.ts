@@ -34,6 +34,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    /* Check if there is a user logged in, there is a user
+    we set the email and username and redirect to movies 
+    if not we set user to null and redirect to signup page*/
     this.authService.user$.subscribe(data => {
       if(data){
         this.authService.currentUser.set({
