@@ -11,6 +11,9 @@ const authStub: any = {
     },
     createUserWithEmailAndPassword() {
       return Promise.resolve();
+    },
+    signOut() {
+      return Promise.resolve();
     }
   }
 };

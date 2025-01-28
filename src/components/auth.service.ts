@@ -1,6 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signOut, updateProfile } from '@angular/fire/auth';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from '@angular/fire/auth';
 import { user } from 'rxfire/auth';
 import { UserInterface } from './movie';
 
