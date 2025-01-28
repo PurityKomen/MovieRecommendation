@@ -2,7 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MovieListComponent } from './movie-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
+import { Auth } from '@angular/fire/auth';
+import { AuthService } from '../auth.service';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
+
+const authStub: any = {
+  authState: {},
+  auth: {
+    signInWithEmailAndPassword() {
+      return Promise.resolve();
+    },
+    createUserWithEmailAndPassword() {
+      return Promise.resolve();
+    }
+  }
+};
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -10,9 +25,19 @@ describe('MovieListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieListComponent, HttpClientTestingModule, RouterTestingModule],
-    })
-    .compileComponents();
+      imports: [
+        MovieListComponent,
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([
+          { path: 'movie', component: MovieDetailComponent },
+        ]),
+      ],
+      providers: [
+        { provide: AuthService, useClass: AuthService },
+        { provide: Auth, useValue: authStub },
+      ],
+      teardown: { destroyAfterEach: false },
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;
@@ -50,9 +75,8 @@ describe('MovieListComponent when it throws an error', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieListComponent,RouterTestingModule]
-    })
-    .compileComponents();
+      imports: [MovieListComponent, RouterTestingModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;

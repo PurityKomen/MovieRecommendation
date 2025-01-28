@@ -4,14 +4,28 @@ import { RegisterComponent } from './register.component';
 import { AuthService } from '../auth.service';
 import { Auth } from '@angular/fire/auth';
 
+const authStub: any = {
+  authState: {},
+  auth: {
+    signInWithEmailAndPassword() {
+      return Promise.resolve();
+    },
+    createUserWithEmailAndPassword() {
+      return Promise.resolve();
+    }
+  }
+};
+
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegisterComponent,Auth],
-      providers: [AuthService],
+      imports: [RegisterComponent],
+      providers: [AuthService,
+        { provide: Auth, useValue: authStub },
+      ],
     })
     .compileComponents();
 

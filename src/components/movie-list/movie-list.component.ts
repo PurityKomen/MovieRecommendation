@@ -53,7 +53,7 @@ export class MovieListComponent implements OnInit {
 
   constructor(
     public movieService: MovieService,
-     private router: Router, 
+     public router: Router, 
      config: NgbRatingConfig,
      public fb: FormBuilder,
      protected route: ActivatedRoute,

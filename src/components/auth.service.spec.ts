@@ -1,14 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+
+const authStub: any = {
+  authState: {},
+  auth: {
+    signInWithEmailAndPassword() {
+      return Promise.resolve();
+    },
+    createUserWithEmailAndPassword() {
+      return Promise.resolve();
+    }
+  }
+};
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach( () => {
     TestBed.configureTestingModule({
-      providers: [ AuthService],
+      imports: [
+      ],
+      providers: [ 
+        { provide: AuthService, useClass: AuthService },
+        { provide: Auth, useValue: authStub },
+            ],
+      teardown: {destroyAfterEach: false}
     });
     service = TestBed.inject(AuthService);
   });

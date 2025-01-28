@@ -45,4 +45,16 @@ describe('MovieServiceComponent', () => {
     service.searchMovie({query: 'hello'})
     expect(service.searchMovie).toHaveBeenCalled();
   }));
+
+  it('should test getGenre', fakeAsync(() => {
+    spyOn(service, 'getGenre').and.callThrough();
+    service.getGenre()
+    expect(service.getGenre).toHaveBeenCalled();
+  }));
+
+  it('should test getRecommendedMovies', fakeAsync(() => {
+    spyOn(service, 'getRecommendedMovies').and.callThrough();
+    service.getRecommendedMovies(1,2,3,1)
+    expect(service.getRecommendedMovies).toHaveBeenCalled();
+  }));
 });
