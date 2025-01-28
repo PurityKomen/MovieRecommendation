@@ -6,7 +6,7 @@ A movie recommendation application for displaying a list of movies and viewing a
 
 ## Live Link
 
-For the whole app - 
+For the whole app - [https://movie-recommendation-1jwul68jt.vercel.app/movies](https://movie-recommendation-1jwul68jt.vercel.app/movies)
 
 ## Project Setup
 
