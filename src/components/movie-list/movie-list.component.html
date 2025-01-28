@@ -44,10 +44,10 @@
 
       <div class="d-flex justify-content-between row">
 
-        <div class="d-flex mb-0">
+        <div class=" mb-0">
           <h5 class="display-5">Discover Movies</h5>
-          <span class="text-success m-4"> <p (click)="viewDiscoverMovies()"
-            >Explore Full Discover Movies List</p></span>
+          <span class="d-flex justify-content-end mb-2"> <button class="btn btn-outline-success" type="submit" (click)="viewDiscoverMovies()"
+            >Explore Full Discover Movies List</button></span>
         </div>
         
         @for (item of (searchResult || movies); track item.id ) {
@@ -65,10 +65,10 @@
         }
 
 
-        <div class="d-flex">
+        <div>
           <h5 class="display-4 ">Recommended Movies</h5>
-          <span class="text-success m-4"> <p (click)="viewRecommendedMovies()"
-             >Explore Full Recommended Movies List</p></span>
+          <span class="d-flex justify-content-end mb-2"> <button class="btn btn-outline-success" type="submit" (click)="viewRecommendedMovies()"
+             >Explore Full Recommended Movies List</button></span>
         </div>
         
         @for (item of recommendMovies; track item.id ) {
