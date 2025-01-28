@@ -44,3 +44,4 @@ Thumbs.db
 #environment variables
 ./components/environments/environment.development
 ./components/environments/environment
+.vercel
