@@ -26,14 +26,11 @@ For the whole app - [https://movie-recommendation-1jwul68jt.vercel.app/movies](h
 6. Vercel to deploy frontend
 
 ## Designs 
+![Home Page](public/image/IMG-20250129-WA0008.jpg/)
 
-file:///home/purity/Downloads/IMG-20250129-WA0008.jpg
-file:///home/purity/Downloads/IMG-20250129-WA0012.jpg
-file:///home/purity/Downloads/IMG-20250129-WA0010.jpg
+![Movie Detail Page](public/image/IMG-20250129-WA0012.jpg)
 
-![Movie Detail Page](/home/purity/Downloads/IMG-20250129-WA0012.jpg)
-
-![Reccommended/Discover Movies Page](/home/purity/Downloads/IMG-20250129-WA0010.jpg)
+![Recommended/Discover Movies Page](public/image/IMG-20250129-WA0010.jpg)
 
 ## Deliverables
 Your client application should have these sets of screens/pages:
