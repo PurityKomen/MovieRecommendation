@@ -23,10 +23,13 @@ For the whole app - [https://movie-recommendation-1jwul68jt.vercel.app/movies](h
 3. Karma for Testing
 4. Firebase for Authentication
 5. VsCode as my text editor
-6. Vercel to deploy frontend 
+6. Vercel to deploy frontend
 
 ## Designs 
-![Home Page](/home/purity/Downloads/IMG-20250129-WA0008.jpg)
+
+file:///home/purity/Downloads/IMG-20250129-WA0008.jpg
+file:///home/purity/Downloads/IMG-20250129-WA0012.jpg
+file:///home/purity/Downloads/IMG-20250129-WA0010.jpg
 
 ![Movie Detail Page](/home/purity/Downloads/IMG-20250129-WA0012.jpg)
 
