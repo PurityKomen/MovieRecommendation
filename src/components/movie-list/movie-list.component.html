@@ -45,9 +45,13 @@
       <div class="d-flex justify-content-between row">
 
         <div class=" mb-0">
-          <h5 class="display-5">Discover Movies</h5>
+          @if(searchResult){
+            <h5 class="display-5">Search Results</h5>
+          } @else {
+            <h5 class="display-5">Discover Movies</h5>
           <span class="d-flex justify-content-end mb-2"> <button class="btn btn-outline-success" type="submit" (click)="viewDiscoverMovies()"
             >Explore Full Discover Movies List</button></span>
+          }
         </div>
         
         @for (item of (searchResult || movies); track item.id ) {
