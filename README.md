@@ -25,6 +25,13 @@ For the whole app - [https://movie-recommendation-1jwul68jt.vercel.app/movies](h
 5. VsCode as my text editor
 6. Vercel to deploy frontend 
 
+## Designs 
+![Home Page](/home/purity/Downloads/IMG-20250129-WA0008.jpg)
+
+![Movie Detail Page](/home/purity/Downloads/IMG-20250129-WA0012.jpg)
+
+![Reccommended/Discover Movies Page](/home/purity/Downloads/IMG-20250129-WA0010.jpg)
+
 ## Deliverables
 Your client application should have these sets of screens/pages:
 
